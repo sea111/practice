@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		
+	</body>
+	<script>
+//		function dosome(){
+//			var blog="梦想";
+//			function inner(){
+//				alert(blog);
+//			}
+//			inner();
+//		}
+		//alert(blog);//报错
+		//inner();//报错
+		//dosome();//梦想
+	//function dosome(){
+	//	var author="闪避";
+	//	blog="梦想";
+	//	alert(author);
+	//}
+	//dosome();//闪避
+	//alert(blog)//梦想
+	//alert(author)//报错
+
+	//字符串转日期格式，strDate要转为日期格式的字符串
+	//function getDate(strDate){
+	//var date = eval('new Date(' + strDate.replace(/\d+(?=-[^-]+$)/,
+	//function (a) { return parseInt(a, 10) - 1; }).match(/\d+/g) + ')');
+	//return date;
+	//}
+	//测试
+	//console.log(getDate("2012-05-09"));
+	var strBeginTime ="2016年02月06日 12:07:00".replace("年", "/").replace("月", "/").replace("日", "");  
+	var begintime = new Date(Date.parse(strBeginTime));  
+	console.log(begintime.getDate());  //弹出结果表示转换成功  
+  
+	function date(){  
+	    var date = new Date();     
+	    var year = date.getFullYear();  
+	    var month = date.getMonth()+1;    //js从0开始取   
+	    var date1 = date.getDate();   
+	    var hour = date.getHours();   
+	    var minutes = date.getMinutes();   
+	    var second = date.getSeconds();  
+	   	console.log(date)
+	   	console.log(+year+"年"+month+"月"+date1+"日");
+	   	console.log(+year+"年"+month+"月"+date1+"日"+hour+"时"+minutes +"分"+second+"秒" );  
+	}  
+	date()
+	
+/*	function a(){
+		var b=2;
+	}
+	a()
+	console.log(b);//b is not defined;*/
+	
+/*	function a(){
+		var b=2;
+	}
+	console.log(b);//b is not defined*/
+	
+/*	var b;
+	function a(){
+		var b=2;
+	}
+	a()
+	console.log(b);//undefined;*/
+	
+/*	var b; 
+	function a(){
+		console.log(b)//undefined;
+		var b=2;
+		console.log(b)//2
+	}
+	a()
+	console.log(b);//undefined;*/
+	function a(){
+		var a=1;
+		alert(a)
+	}
+	a();
+//	var c=1
+//	function b(){
+//		var c=0;
+//	}
+//	b()
+//	alert(c);//1
+	
+/*	function f1(){
+　　　　var n=999;
+　　　　function f2(){
+　　　　　　alert(n); // 999
+　　　　}
+　　}
+	function f1(){
+　　　　var n=999;
+　　　　function f2(){
+　　　　　　alert(n); 
+　　　　}
+　　　　return f2;
+　　}
+　　var result=f1();
+　　result(); // 999*/
+	function d(){
+		var aa=2;
+		function dd(){
+			alert(aa)
+		}
+		return dd()
+	}
+	d();
+	
+	
+/*	var name = "The Window";
+　　var object = {
+　　　　name : "My Object",
+　　　　getNameFunc : function(){
+　　　　　　return function(){
+　　　　　　　　return this.name;
+　　　　　　};
+　　　　}
+　　};
+　　alert(object.getNameFunc()());*/
+　　var name = "The Window";
+　　var object = {
+　　　　name : "My Object",
+　　　　getNameFunc : function(){
+　　　　		var that = this;
+			//console.log(that)objet
+　　　　		return function(){
+　　　　			return that.name;
+　　　　　　};
+　　　　}
+　　};
+　　alert(object.getNameFunc()());
+
+
+	function f1(){
+		var n=99;
+		function f2(){
+			alert(n)
+		}
+		return f2;
+	}
+	var re=f1();
+	//console.log(re)function f2(){alert(n)}
+	re()
+</script>
+</html>

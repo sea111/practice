@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script src="js/jquery-2.1.0.min.js"></script>
+	<script>
+	/*timer()
+	function timer(){
+		setInterval(function(){
+	   		var nowtime = new Date();
+			var deadline = new Date(2017,8,25);
+			var cha = (deadline - nowtime)/1000;
+			console.log(cha)
+			var h = zero(Math.floor(cha/3600));
+			var m = zero(Math.floor(cha%86400%3600/60));
+			var s = zero(Math.floor(cha%60));
+			$(".timer").html('<span>距结束 </span> <i>'+h+'</i>:<i>'+m+'</i>:<i>'+s+'</i>')
+	   	},1000);
+	   	function zero(num){
+			if(num > 9){
+				return num;
+			}else{
+				return '0'+num;
+			}			
+		}
+	}	*/
+	var data=new Date();
+	var full=data.getTime();
+	console.log(full)
+	var year=data.getFullYear();
+	console.log(year);
+	var month=data.getMonth()+1;
+	console.log(month);
+	var day=data.getDate();
+	console.log(day);
+	var hour=data.getHours();
+	console.log(hour)
+	var m=data.getMinutes();
+	console.log(m)
+	var s=data.getSeconds();
+	console.log(s)	
+	</script>
+</html>

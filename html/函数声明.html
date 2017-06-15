@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function box(num1,num2){
+				return num1+num2; //普通函数声明方式
+			}
+			alert(box(1,2));
+		
+			var box=function(num1,num2){
+				return num1+num2; //使用变量初始化函数
+			}
+			alert(box(1,2));
+		
+			var box=new Function('num1','num2','return num1+num2');
+			alert(box(1,2)); //使用new的构造函数来声明
+		
+		
+			//函数可以传递函数
+		
+		
+			//下面的例子很普通，不是作为函数来传递的，而是作为函数的返回值来传递的
+			function box(sum,num){
+				return sum+num;
+			}
+			function sum(num){
+				return num+10;
+			}
+		
+			var result=box(sum(10),10); //sum(10)这里传递的是函数的返回值，和普通的变量一样，没区别
+			alert(result);//30
+		
+		
+			//要把函数本身作为参数传递，而不是函数的结果
+			function box(sum,num){
+				return sum(num);	
+			}
+			function sum(num){
+				return num+10;
+			}
+			var result=box(sum,10);//这个sum是一个函数，当作参数传递到另一个函数里，而不是函数的返回值。
+			alert(return);//20
+		
+		 
+		
+			function box(num){
+				if(num<=1){
+					return 1;
+				}else{
+					return num*arguments.callee(num-1);//4*3*2*1=24阶乘，递归
+				} //使用callee调用自身，实现递归
+			}
+			alert(box(4));
+		
+			var color="红色的"; //这里color就是全局变量，而这个变量又是window的属性
+		
+			var box={
+				color:"蓝色的",
+				sayColor:function(){
+					alert(this.color); //这里的color是box下得属性，也就是局部变量
+					//这里this，我们确定是代表的box对象
+				}
+			}
+			alert(this.color); //红色的
+			box.sayColor(); //蓝色的
+		
+		
+			function box(name,age){
+				return name+age;
+			}
+			alert(box.length);
+		
+		
+			function box(num1,num2){
+				return num1+num2;
+			}
+			方法一:	function sum(num1,num2){//apply和call可以冒充另外一个函数
+				return box.apply(this,[num1,num2]);//this表示window作用域，【】表示传递的参数
+			}
+		
+			方法二: function sum(num1,num2){
+				return box.apply(this,arguments);//这个可以当数组传递
+			}
+			//alert(box(10,10)); //20
+			alert(sum(10,10)); //20
+		
+			function box(num1,num2){
+				return num1+num2;
+			}
+		
+			function sum(num1,num2){
+				return box.call(this,num1,num2);//call只是传递参数不同，其他和apply一样
+			}
+			alert(sum(10,10));
+		
+		
+			var color="红色的";
+			var box={
+				color:'蓝色的'
+			}
+			function sayColor(){
+				alert(this.color);
+			}
+			sayColor(); //全局
+			//用call是实现对象冒充，冒充box下，冒充window下
+			sayColor.call(window); //冒充window红色的
+			sayColor.call(box); //冒充box，作用域就在box对象里面，所以color就是蓝色的
+			
+		
+		</script>
+	</body>
+</html>

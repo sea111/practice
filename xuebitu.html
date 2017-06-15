@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<script>
+		//rem
+		document.documentElement.style.fontSize = document.documentElement.clientWidth / 7.5 + "px";
+		window.addEventListener("resize",function(){
+			document.documentElement.style.fontSize = document.documentElement.clientWidth / 7.5 + "px";
+		},false);	
+	</script>
+	<style>
+		*{padding:0;margin:0;}
+		i,em{font-style:normal;}
+		ul,li{list-style: none;}
+		.cont{height:0.88rem;border:1px solid #ccc;margin:0 auto;}
+		ul{height:0.88rem;}
+		li{height:0.88rem;border-bottom:1px solid #ccc;margin-top:0.1rem;margin-left:0.1rem;}
+		.top{
+			position:relative;
+			background:#000;
+			height:0.88rem;
+			line-height:0.88rem;
+			text-align:center;
+			font-size:0.36rem;
+			color:#fff;
+		}
+		.bg-icon{
+			display:block;
+			width:0.9rem;
+			height:0.9rem;
+			background:url(img/news.png.png) no-repeat;
+			background-size:5.4rem 0.9rem;			
+			position:absolute;
+		}
+		.one{
+			background-position:0 0;
+		}
+		.two{
+			background-position:-0.9rem 0;
+		}
+		.three{
+			background-position:-1.8rem 0;
+		}
+		.four{
+			background-position:-2.7rem 0;
+		}
+		.five{
+			display: block;
+		    /*width: 0.64rem;
+		    height: 0.64rem;*/
+		    left:-0.1rem;
+		    top:0rem;
+			background-position:-3.6rem 0;
+		}
+		.six{
+		    display: block;
+		   /* width: 0.64rem;
+		    height: 0.64rem;*/
+		    right:0.1rem;
+		    top: 0rem;
+		    background-position: -4.5rem 0;		
+		}
+	</style>
+	<body>
+		<div class="cont">
+			<div class="top">
+				<i class="bg-icon five"></i>
+				<p>哈哈哈</p>
+				<i class="bg-icon six"></i>
+			</div>
+			<ul>
+				<li><i class="bg-icon one"></i></li>
+				<li><i class="bg-icon two"></i></li>
+				<li><i class="bg-icon three"></i></li>
+				<li><i class="bg-icon four"></i></li>
+			</ul>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//方法一：
+			var arr=[];
+			var arr2=[];
+			show();
+			function show(b){
+				for(var i=0;i<10;i++){
+					var tt=Math.floor(Math.random()*90+10);
+					arr[i]=tt;
+					if(arr2.indexOf(arr[i])<0){
+						arr2.push(arr[i]);
+					}
+					console.log(arr2.sort(paixu()));
+				}
+			
+			}
+			function paixu(a,b){
+				return a-b; //升序排序
+			}
+			
+			
+			
+			//方法二:
+			var num1 = [];
+			for(var i = 0; i < 5; i++){
+				num1[i] = Math.floor(Math.random()*90 + 10); //范围是 [10,100]
+				for(var j = 0; j < i; j++){
+					if(num1[i] == num1[j]){
+						i--; //去掉重复值
+					}
+					console.log(num1[i])
+				}
+			}
+		</script>
+	</body>
+</html>

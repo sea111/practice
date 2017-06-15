@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+	</head>
+	<style>
+		*{padding:0;margin:0;}
+		#box{width:100%;height:100%;}
+		#content{width:100%;height:100%;margin:0 auto;}
+		.dl{width:6.7rem;height:2.2rem;border:1px solid #ccc;margin:0 0.1rem;margin:0.2rem auto;}
+		.dl dt{width:1.6rem;height:1.6rem;border:1px solid #ccc;float:left;margin-top:0.2rem;margin-left:0.1rem;}
+		.dl dt img{width:1.6rem;height:1.6rem;display:inline-block;}
+		.dl dd{float:left;width:4.75rem;height:2.2rem;margin-left:0.2rem;}
+		.cont,.conts{font-size:0.16rem;color:#333;line-height:0.5rem;margin-top:0.4rem;}
+	</style>
+	<script>
+		document.documentElement.style.fontSize = document.documentElement.clientWidth / 7.5 + "px";
+		window.addEventListener("resize",function(){
+			document.documentElement.style.fontSize = document.documentElement.clientWidth / 7.5 + "px";
+		},false);
+	</script>
+	<body>
+		<div id="box">
+			<div id="content">
+				<!--<dl>
+					<dt><img scr=""></dt>
+					<dd>
+						<p class="cont"></p>
+						<p class="conts"></p>
+					</dd>
+				</dl>-->
+			</div>
+		</div>
+	</body>
+	<script src="js/jquery-2.1.0.min.js"></script>
+	<script>
+		$(function(){
+			var pageIndex=1;
+			var pageSize=6;
+			var complete=true;
+			var total=0;
+			var scrollEndTimer=null;
+			var page=page || 1;
+			function getData(page){
+//				page=page || 1
+				$.ajax({
+					type:"get",
+					url:"JSON/countContents.json",
+					async:true,
+					success:function(datas){
+						//console.log(datas.data.total)
+						var mes=datas.data.coupons;
+						var str=""
+						for(var i in mes){
+						//	console.log(mes[i])
+							str+="<dl class='dl' coupid='"+mes[i].receiveCouponId+"'>"
+							str+="<dt>"
+							str+="<img src="+mes[i].picUrl+">"
+							str+="</dt>"
+							str+="<dd>"
+							str+="<p class='cont'>"+mes[i].couponName+"</p>"
+							str+="<p class='conts'>"+mes[i].activityEndTime+"</p>"
+							str+="</dd>"
+							str+="</dl>"
+						}
+						$("#content").append(str);
+						pageIndex++;
+						total=Math.ceil(datas.data.total/pageSize);//加载的是第二页的
+						complete=true;
+					}
+				});
+			}
+			getData(pageIndex)
+			$(window).on("scroll",function(){
+				var scrollTop=$(this).scrollTop();
+				clearTimeout(scrollEndTimer);
+				scrollEndTimer=setTimeout(function(){
+					var scroll=scrollTop+$(window).height();
+					console.log(scroll)
+					var wh=$(".dl").height();
+					console.log(wh)
+					if(scroll>(wh-10)){
+						if(complete && pageIndex){
+							getData(pageIndex)
+							console.log(pageIndex)
+						}
+					}
+				},300)
+			})
+			
+		})
+	</script>
+</html>

@@ -1,0 +1,117 @@
+<!--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8" />
+<title>JS+CSS仿流行的LED跑马屏效果</title>
+<style type="text/css">
+#pmp {
+	font-family: "黑体";
+	font-size: 40px;
+	color: #FF0000;
+	text-decoration: none;
+	height: 50px;
+	width: 500px;
+	margin:0px auto;
+	border: 5px solid #CCCCCC;
+	/*background-color: #333333;*/
+	padding-top: 8px;
+	padding-right: 5px;
+	padding-left: 5px;
+	/*background-image: url("http://www.webdm.cn/images/20130228/LEDbj.gif");*/
+}
+marquee {
+	margin:0px;
+	filter:alpha(opacity=45);
+ 	/*filter: Glow(Color=#ffb6b6, Strength=5px);*/
+}
+</style>
+</head>
+<body>
+<div id="pmp">
+	<marquee scrollamount="3" scrolldelay="30" direction= "left" loop="-1" scrollamount="100" onmouseover="this.stop()" onmouseout="this.start()">
+		您现在观看的是2016年财富金字塔颁奖盛典网络直播。
+	</marquee>
+</div>
+</body>
+</html>-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<style>
+		/* 假设.device的宽度是设备的宽度*/
+		.device{
+		  width:320px;
+		  border:1px solid #ccc;
+		  height:30px;
+		  line-height:30px;
+		}
+		.marquee{
+		    position: relative;
+		    width: 100%;
+		    overflow: hidden;
+		    height: 25px;
+		}
+		.marquee > .get-marquee-width{
+		    position: relative;
+		}
+		.marquee> .get-marquee-width > .marquee-move{
+		    -webkit-animation:  marquee 20s linear 1s infinite;
+		    -o-animation:  marquee 20s linear 1s infinite;
+		    animation:  marquee 20s linear 1s infinite;
+		    position: absolute;
+		    width:100%;
+		    padding-left: 50px;
+		    white-space: nowrap;
+		}
+		
+		@-webkit-keyframes marquee {
+		/*
+		
+		
+		*/
+		    0% { left: 0; }
+		    5%{left: 0;}
+		    100% { left: -100%; }
+		}
+		@-moz-keyframes marquee {
+		    0% { left: 0; }
+		    5%{left: 0;}
+		    100% { left: -100%; }
+		}
+		@-o-keyframes marquee {
+		    0% { left: 0; }
+		    5%{left: 0;}
+		    100% { left: -100%; }
+		}
+		@keyframes marquee {
+		    0% { left: 0; }
+		    5%{left: 0;}
+		    100% { left: -100%; }
+		}
+	</style>
+	<body>
+		<div class="device">
+			<div class="navTitle marquee">
+				<div class="get-marquee-width">
+				    <div class="marquee-move">
+				    <!-- 这里的span 仅仅是为了获得问题内容的长度用的,也可以换成其他的行内元素-->
+				    	<span>我是一个很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长的标题</span>
+				    	<span>我是一个很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长的标题</span>
+				    </div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../js/jquery-2.1.0.min.js" ></script>
+	<script>
+		$(function(){
+			$(function(){
+				$(".marquee>div").width($("span").width());//js这里主要获取到滚动内容的宽度就可以了
+			
+			});
+		})
+	</script>
+</html>

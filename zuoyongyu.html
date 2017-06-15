@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/*function a(){
+				var b=1;
+				//alert(b);//1
+			}
+			a()//若不调用a();不弹出结果。
+			//alert(b)//b is not defined;局部变量外部调用报错*/
+			
+			/*var ab=2;
+			function aa(){
+				//alert(ab)//2
+			}
+			aa();*/
+			
+			/*var ac=3;
+			function c(){
+				var ca=4;
+				//alert(ac);//3
+				//alert(ca)//4
+			}
+			c();*/
+			
+			function d(){
+				var dd=5;
+				function e(){
+					console.log(dd);
+				}
+				/*(function(){
+					console.log(dd);
+				})()*/
+				return e();
+			}
+			d()
+			console.log(d);
+			
+			
+			
+			function test(){
+			   	var thenum="90";
+			   	alert(thenum);
+			   	return	function(){                
+	                   		var thenum="110";
+	                   		alert(thenum);
+	                	}
+			}
+			/*test()//单独调用test()返回结果90.*/
+			var result=test();//90
+			result();//110
+			console.log(result)//return后面的函数
+//语法为：return 表达式; 语句结束函数执行，返回调用函数，而且把表达式的值作为函数的结果。
+			
+			
+			//请注意this此时指向myobject
+			/*方法调用模式*/
+		    /*var myobject={
+		            value:0,
+		            inc:function(){
+		                   // alert(this.value);
+		                    alert(this.inc);
+		                    //alert(this);//[object,object]
+		                    alert(value)
+		                }
+		        }
+		    myobject.inc();*/
+		 
+		 
+		//请注意this此时指向window
+		/*函数调用模式*/   
+	    /*var add=function(a,b){
+	        	//alert(this)//this被绑顶到window
+	            return a+b;
+	        }
+	    var sum=add(3,4);
+	    alert(sum)*/
+		 
+		 
+		/*function un(){
+			var una=100;
+		}
+		un();
+		alert(una);//una is not defined;*/
+		
+		//只声明没赋值undefiend
+		
+		</script>
+	</body>
+</html>

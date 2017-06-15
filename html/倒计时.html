@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>倒计时效果</title>
+<!--		<link rel="stylesheet" href="css/demo.css" />-->
+	</head>
+	<body>
+		<div class="content3">
+			<div class="time">距离春节时间还有<span id="LeftTime"></span></div>
+		</div>
+		<script>
+			function FreshTime(){
+				var endtime=new Date("2017/5/1,0:0:0");//结束时间
+				var nowtime = new Date();//当前时间
+				var lefttime=parseInt((endtime.getTime()-nowtime.getTime())/1000); 
+				var d=parseInt(lefttime/3600/24);
+				var h=parseInt((lefttime/3600)%24);
+				var hh=checkTime(h)
+				var m=parseInt((lefttime/60)%60);
+				var mm=checkTime(m)
+				var s=parseInt(lefttime%60);
+				var ss=checkTime(s)
+				document.getElementById("LeftTime").innerHTML=d+"天"+hh+"小时"+mm+"分"+ss+"秒";
+				function checkTime(i){
+					if (i<10){
+						i="0" + i;
+					}
+					return i;
+				} 
+				if(lefttime<=0){
+					document.getElementById("LeftTime").innerHTML="团购已结束";
+					clearInterval(sh);
+				}
+			}
+			FreshTime();
+			
+			var sh=setInterval(FreshTime,1000);
+		</script>
+	</body>
+</html>

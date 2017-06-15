@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function a(){
+				return "我只有被调用才可以执行";//return表示把这句话字符串返回回来	
+			}
+			//console.log(a()) //调用，相当于a()="我只有被调用才可以执行"，被调用才可以执行
+			
+			
+			function b(name,age){
+				return "名字"+":"+name+" "+"年龄"+":"+age;
+			}
+			console.log(b("树木","1"))//名字：树木 年龄：1
+		
+		
+			function ba(name,age){
+				return "名字"+":"+name+" "+"年龄"+":"+age;
+			}
+			var str=ba("树木","1")
+			console.log(str)//名字：树木 年龄：1
+		
+					
+			function c(){
+				return 10;//当一个函数遇到第一个return，就会终止函数继续往下
+				return 100;
+			}
+			console.log(c()) //10
+			
+			
+			function d(){
+				return arguments[0]+arguments[1]+arguments[2]
+			}
+			console.log("树木","绿色","1")//树木 绿色 1
+			
+			
+			function e(){
+				var sum=0;
+				for(var i=0;i<arguments.length;i++){
+					sum+=arguments[i];
+				}
+				return sum;
+			}
+			console.log(e(11,50,20))//81
+
+
+			function f(num){
+				return num+100;
+			}
+			function f(num){
+				return num+200;//第二个函数，把第一个函数覆盖掉了，不具备重载功能
+			}
+			console.log(f(30))//输出250 重载就是根据参数，选择相同函数名而参数不同的函数
+		
+		
+			function f1(){
+				return 1;
+			}
+			console.log(f1())
+		
+		</script>
+	</body>
+</html>

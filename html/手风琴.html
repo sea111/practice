@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+		}
+		.wrapper{
+			width: 938px;
+			height: 128px;
+			border: 1px solid #d3d3d3;
+		} 
+		.wrapper li{
+			width: 156px;
+			height: 128px;
+			float:left;
+			overflow: hidden;
+			position: relative;
+		}
+		.wrapper li a{
+			display: block;
+			height: 128px;
+			width: 156px;
+			overflow: hidden;
+		}
+		.wrapper li a img{
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			height: 72px;
+			width: 117px;
+		}
+		.wrapper .info{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 136px;	
+		}
+		.wrapper .info h3{
+			font-size: 14px;
+			font-weight: 700;
+		}
+		.wrapper .info p{
+			color:#868686;
+			font-size: 12px;
+			height: 22px;
+			line-height: 22px;
+			width: 136px;
+		}
+		.wrapper .info .price{
+			font-size: 14px;
+			font-style: italic;
+			color: #fa2a5d;
+			height: 35px;
+		}
+		.wrapper .line{
+			position: absolute;
+			right: 0;
+			top: 0;
+		}
+		.wrapper .mask{
+			position: absolute;
+			top:0;
+			left: 0;
+			height: 128px;
+			width: 156px;
+			background-color: #CCCCCC;
+			opacity:0;
+		}
+		.wrapper:hover .mask{
+			opacity: 0.3;
+		}
+		.wrapper ul *{
+			transition: all linear 0.2s;
+		}
+		.wrapper li.big, li.big a{
+			width: 314px;
+		}
+		.wrapper li.big img{
+			width: 196px;
+			height: 120px;
+			right: 0;
+			bottom: 0;
+		}
+		.wrapper li.big .info{
+			width: 290px;
+		}
+		.wrapper li.big h3{
+			font-size: 18px;
+		}
+		.wrapper li.big .info{
+			width: 290px;
+		}
+		.wrapper li.big h3{
+			font-size: 18px;
+		}
+		.wrapper li.big p{
+			font-size: 14px;
+			width: 166px;
+		}
+		.wrapper li.big p.price{
+			font-size: 16px;
+			padding-top: 7px;
+		}
+		.wrapper li.big a:hover .mask{
+			opacity: 0;
+		}
+		.line{
+			position: absolute;
+			right: 0;
+			width: 0;
+			height: 128px;
+			border: 1px dashed #ccc;
+		}
+	</style>
+	<body>
+		<div id="subject" class="wrapper">
+			<ul>
+				<li>
+					<a href="#">
+						<img src="img/img/e6657ca7-c4c5-43fc-9bd6-29999102fc61.jpg"/>
+						<div class="info">
+							<h3 style="color:#f62368">美妆品牌</h3>
+							<p>2周年</p>
+							<p class="price"><strong>1</strong><i>折起</i></p>
+						</div>
+						<i class="line"></i>
+						<i class="mask"></i>
+					</a>
+				</li>
+			<li class="big">
+				<a href="#">
+					<img src="img/img/e6657ca7-c4c5-43fc-9bd6-29999102fc61.jpg"/>
+					<div class="info">
+						<h3 style="color:#f62368">美妆品牌</h3>
+						<p>2周年</p>
+						<p class="price"><strong>1</strong><i>折起</i></p>
+					</div>
+					<i class="line"></i>
+					<i class="mask"></i>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<img src="img/img/e6657ca7-c4c5-43fc-9bd6-29999102fc61.jpg"/>
+					<div class="info">
+						<h3 style="color:#f62368">美妆品牌</h3>
+						<p>2周年</p>
+						<p class="price"><strong>1</strong><i>折起</i></p>
+					</div>
+					<i class="line"></i>
+					<i class="mask"></i>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<img src="img/img/e6657ca7-c4c5-43fc-9bd6-29999102fc61.jpg"/>
+					<div class="info">
+						<h3 style="color:#f62368">美妆品牌</h3>
+						<p>2周年</p>
+						<p class="price"><strong>1</strong><i>折起</i></p>
+					</div>
+					<i class="line"></i>
+					<i class="mask"></i>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<img src="img/img/e6657ca7-c4c5-43fc-9bd6-29999102fc61.jpg"/>
+					<div class="info">
+						<h3 style="color:#f62368">美妆品牌</h3>
+						<p>2周年</p>
+						<p class="price"><strong>1</strong><i>折起</i></p>
+					</div>
+					<i class="line"></i>
+					<i class="mask"></i>
+				</a>
+			</li>
+			</ul>
+		</div>
+	</body>
+	<script type="text/javascript">
+		window.onload=function() {
+			initList();
+			function initList() {
+				var outer=document.getElementById("subject");
+				var list=outer.getElementsByTagName('li');
+				for(var i=0;
+					i < list.length;
+					i++) {
+					bind(list[i], 'mouseover', mouseoverhandler);
+				}
+			}
+			function bind(el, eventType, callback) {
+				if(typeof el.addEventListener=='function') {
+					el.addEventListener(eventType, callback, false);
+				}
+				else if(typeof el.attachEvent==='function') {
+					el.attachEvent('on'+ eventType, callback);
+				}
+			}
+			function mouseoverhandler(e) {
+				var target=e.target || e.srcElement;
+				var outer=document.getElementById("subject");
+				var list=outer.getElementsByTagName('li');
+				for(var i=0;
+					i < list.length;
+					i++) {
+					list[i].className="";
+				}
+				while(target.tagName !='LI' || target.tarName=='BODY') {
+					target=target.parentNode;
+				}
+					target.className="big";
+			}
+		}
+	</script>
+</html>
